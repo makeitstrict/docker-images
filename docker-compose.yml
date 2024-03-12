@@ -3,7 +3,12 @@ version: '3.8'
 services:
   db:
     image: postgres:12
+    environment:
+      - POSTGRES_PASSWORD=root
+    ports:
+      - 5432:5432
   app:
     build:
-      context: contextPath
+      context: .
       dockerfile: Dockerfile
+    entrypoint: ["sleep", "infinity"]
